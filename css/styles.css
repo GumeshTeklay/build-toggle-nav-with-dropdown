@@ -31,12 +31,12 @@ h2{
 header{
     background-color: #f8fafc;
 }
-svg{
-    width: 1.25rem;
-}
 button {
     background-color: #f8fafc;
     border: none;
+}
+svg{
+    width: 1.25rem;
 }
 header a {
     text-decoration: none;
@@ -47,7 +47,27 @@ h1 a{
     color: #dc2626;
 }
 nav{
-    flex: 1 0 100%;
+    position: absolute;
+    background-color: #f8fafc;
+    width: 98vw;
+    top: 3.75rem;
+    left: 0;
+    /* once this changes to position absolute, it's no longer in the layout of the 
+    HTML, therefore it's no longer a flex item*/
+    visibility: hidden;
+    opacity: 0;
+    overflow: hidden;
+    /* flex: 1 0 100%; */
+    /* max-height: 0; */
+    
+}
+/* spacial class that will show the nav when the button is clicked 
+(do not add to the html) */
+.show-nav{
+    /* max-height: 250; */
+    visibility: visible;
+    opacity: 1;
+    overflow: visible;
 }
 .menu li{
     line-height: 3.125rem;
@@ -69,6 +89,9 @@ nav{
     overflow: hidden;
     max-height: 0;
 }
+.submenu li{
+    border-bottom: 1px solid #cbd5e1;
+}
 /* What do you want to hover over? --> first selector + :hover
    What do you want to change? --> second selector */
 .menu li:hover > .submenu {
@@ -77,11 +100,58 @@ nav{
     overflow: visible;
     max-height: 14.0625rem;
 }
-/* This works to an extent, but the hover state has limitations. A better way to dev a dropdown nav is javascript */
+/* This works to an extent, but the hover state has limitations. A better way to dev a dropdown nav is with 
+javascript */
 @media screen and (min-width: 1100px) {
     .inner-container{
         padding: 0;
         width: 1000px;
         margin: 0 auto;
     }
+    .btn{
+        display: none;
+    }
+    nav{
+        position: static;
+        visibility: visible;
+        opacity: 1;
+        overflow: visible;
+        width: unset;
+    }
+    .inner-container > a{
+        order: 1;
+    }
+    ul.menu{
+        display: flex;
+        gap: 1.5rem;
+    }
+    ul.submenu{
+        padding: 0;
+        position: absolute;
+        top: 55px;
+        right: 0;
+        background-color: #f8fafc;;
+        visibility: hidden;
+        opacity: 0;
+        width: 100%
+    }
+    ul.menu li{
+        position: relative;
+        white-space: nowrap;
+        
+    }
+    ul.menu li:hover > ul {
+        visibility: visible;
+        opacity: 1;
+    }
+    ul.menu li:focus-within > ul,
+    ul.menu li > ul:focus {
+        visibility: visible;
+        opacity: 1;
+        display: block;
+    }
+    /* TO DO: 
+        1. layout the 3 top level links horizontally, side by side
+        2. layout the submenu links (dropdown for wider screen)
+        3. add focus or keyboard focus to the dropdown links */
 }
