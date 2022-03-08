@@ -100,6 +100,14 @@ nav{
     overflow: visible;
     max-height: 14.0625rem;
 }
+.menu li:focus-within>ul,
+.menu li> ul:focus{
+    visibility: visible;
+    opacity: 1;
+    overflow: visible;
+    max-height: 14.0625rem;
+    display: block;
+}
 /* This works to an extent, but the hover state has limitations. A better way to dev a dropdown nav is with 
 javascript */
 @media screen and (min-width: 1100px) {
